@@ -190,7 +190,7 @@ body{
 
 }
 
-@media only screen and (min-width: 767px) and (man-width: 991px){
+@media only screen and (min-width: 767px) and (max-width: 991px){
   .container .jumbotron{
     background:url("./ousa-chea-552189-unsplash (1).jpg") no-repeat;
     background-size: cover; /* or contain depending on what you want */
