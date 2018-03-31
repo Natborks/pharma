@@ -1,17 +1,52 @@
 <% provide(:title, 'Sign up') %>
 <div id="main-content" class="container">
-<h1>Sign up</h1>
+
 
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <h1>Sign up</h1>
+    <br>
+    <p>Click the button to autofill your location.</p>
+
+    <button onclick="getLocation()">Try It</button>
+    <p id="demo"></p>
+    <p id="geo"></p>
+
     <%= form_for @pharmacy, url: {action: "create"} do |f| %>
     <%= render 'shared/error_messages' %>
+
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
+      <%= f.label :pharmacy_name %>
+      <%= f.text_field :pharmacy_name, class: 'form-control' %>
+
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :region %>
+      <%= f.text_field :region, class: 'form-control', list: 'region', id: 'reg' %>
+      <datalist id="region">
+        <option value="Greater-Accra">
+        <option value="Volta">
+        <option value="Ashanti">
+        <option value="Eastern">
+        <option value="Western">
+        <option value="Brong-Ahafo">
+        <option value="Nothern">
+        <option value="Upper-East">
+        <option value="Upper-West">
+        <option value="Central">
+      </datalist>
+
+
+
+      <%= f.label :location %>
+      <%= f.text_field :location, class: 'form-control', id:'loc' %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control', id:'addr' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
@@ -21,6 +56,48 @@
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
+
+    <script>
+    var x = document.getElementById("demo");
+
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+
+        getReverseGeocodingData(position.coords.latitude, position.coords.longitude)
+    }
+
+          function getReverseGeocodingData(lat, lng) {
+          var latlng = new google.maps.LatLng(lat, lng);
+          // This is making the Geocode request
+          var geocoder = new google.maps.Geocoder();
+          geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+              if (status !== google.maps.GeocoderStatus.OK) {
+                  alert(status);
+              }
+              // This is checking to see if the Geoeode Status is OK before proceeding
+              if (status == google.maps.GeocoderStatus.OK) {
+                  console.log(results);
+                  //x.innerHTML = (results[0].formatted_address);
+                  //y.innerHTML = (results[1].formatted_address);
+
+                      document.getElementById('reg').value = (results[0].address_components[4].short_name);
+                      document.getElementById('loc').value = (results[0].address_components[2].short_name);
+                      document.getElementById('addr').value = (results[0].address_components[0].short_name) + " " + (results[0].address_components[1].short_name) + " " + (results[0].address_components[3].short_name);
+
+              }
+          });
+      }
+    </script>
+
   </div>
 </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324163139) do
+ActiveRecord::Schema.define(version: 20180331212950) do
 
   create_table "pharmacies", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 20180324163139) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "region"
+    t.string "location"
+    t.string "pharmacy_name"
+    t.string "address"
     t.index ["email"], name: "index_pharmacies_on_email", unique: true
   end
 

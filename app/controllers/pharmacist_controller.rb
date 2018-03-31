@@ -22,7 +22,7 @@ class PharmacistController < ApplicationController
   private
 
     def pharmacy_params
-      params.require(:pharmacy).permit(:name, :email, :password,
+      params.require(:pharmacy).permit(:name, :pharmacy_name, :email, :region, :location, :address, :password,
                                    :password_confirmation)
     end
 end
