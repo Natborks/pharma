@@ -1,4 +1,11 @@
 <%= provide(:title, @pharmacy.name) %>
 <div id="main-content" class="container">
-  <%= @pharmacy.name %>, <%= @pharmacy.email %>
+  <h2><%= @pharmacy.name %></h2>
+
+  <%@drugs.each do |d| %>
+    <%=d.name%>
+    <%=d.quantity%>
+  <%end%>
+
+
 </div>

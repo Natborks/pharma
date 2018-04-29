@@ -8,4 +8,9 @@ class Pharmacy < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  has_many :drugs
+
+  def supplier?
+    self.role == supplier
+  end
 end

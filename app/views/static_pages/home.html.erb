@@ -6,9 +6,11 @@
     id="sm-img" class="img-responsive visible-xs">-->
     <%= image_tag "freestocks-org-126848-unsplash.jpg", :class => 'img-responsive visible-xs'%>
       <h1 id="jumbotron-h1">Join us and get located anywhere</h1>
-      <p id="jumbotron-id">Are you ready to skyrocket your pharmacy? Click below to join us or learn more</p>
+      <p id="jumbotron-id">Are you ready to skyrocket your pharmacy? Click below to join us or login</p>
       <br>
-      <p><%=link_to "join »", signup_path, class:"btn btn-primary btn-lg jumbo-btn", role:"button"%> <a class="btn btn-primary btn-lg jumbo-btn" href="#" role="button">Learn more »</a></p>
+      <p><%=link_to "join »", signup_path, class:"btn btn-primary btn-lg jumbo-btn", role:"button"%>
+        <%=link_to "login »", login_path, class:"btn btn-primary btn-lg jumbo-btn", role:"button"%>
+      </p>
   </div>
 
   <br>

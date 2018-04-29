@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331212950) do
+ActiveRecord::Schema.define(version: 20180429234041) do
+
+  create_table "drugs", force: :cascade do |t|
+    t.string "name"
+    t.integer "quantity"
+    t.datetime "date_rec"
+    t.string "desc"
+    t.integer "pharmacy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_drugs_on_pharmacy_id"
+  end
 
   create_table "pharmacies", force: :cascade do |t|
     t.string "name"
@@ -22,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180331212950) do
     t.string "location"
     t.string "pharmacy_name"
     t.string "address"
+    t.string "role"
     t.index ["email"], name: "index_pharmacies_on_email", unique: true
   end
 
