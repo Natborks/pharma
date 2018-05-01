@@ -1,11 +1,29 @@
 <%= provide(:title, @pharmacy.name) %>
 <div id="main-content" class="container">
-  <h2><%= @pharmacy.name %></h2>
+  <h2><%= @pharmacy.name %> Pharmacy</h2>
 
+<h3>Add a drug</h3>
+<%=render partial: 'drug/form'%>
+
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>id #</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Email</th>
+      </tr>
+    </thead>
   <%@drugs.each do |d| %>
-    <%=d.name%>
-    <%=d.quantity%>
+  <tr>
+        <td><%=d.id%></td>
+        <td><%=d.name%></td>
+        <td><%=d.quantity%></td>
+        <td>john@example.com</td>
+  </tr>
   <%end%>
+</table>
+
 
 
 </div>

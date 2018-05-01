@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get  '/signup',    to: 'pharmacist#new'
   post '/signup',  to: 'pharmacist#create'
   root 'static_pages#home'
+
   resources :pharmacist do
-      resources :inventories
+      resources :drugs
   end
+
+  post 'login' => 'sessions#create'
 end

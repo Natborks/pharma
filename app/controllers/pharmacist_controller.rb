@@ -6,12 +6,14 @@ class PharmacistController < ApplicationController
 
   def new
     @pharmacy = Pharmacy.new
+    #@drug = Drug.new
   end
 
   def show
     @pharmacy = Pharmacy.find(params[:id])
     #debugger
     @drugs = @pharmacy.drugs
+    
   end
 
   def create

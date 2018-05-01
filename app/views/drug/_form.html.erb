@@ -1,0 +1,15 @@
+<h3>Add a drug</h3>
+
+<%= form_for (@drugs) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
